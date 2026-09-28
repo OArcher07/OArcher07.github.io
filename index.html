@@ -94,13 +94,23 @@
                 .panel{display:none}
                 .panel.active{display:block}
 
-                .placeholder{color:var(--ink-soft);font-style:italic;font-size:0.95rem}
+                .placeholder{color:var(--ink-soft);font-style:italic;font-size:0.95rem;line-height:1.65}
+                .content{display:block;line-height:1.65}
                 .req-list{margin:10px 0 0;padding-left:20px;line-height:1.65}
                 .req-list li{margin-bottom:4px}
 
                 .project-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px;background:var(--cream)}
                 .project-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.08rem;margin:0 0 8px}
-                .field{margin:6px 0}
+                .project-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 22px}
+                .project-gallery a{display:block}
+                .project-gallery img{display:block;width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid var(--line);transition:transform .15s ease,box-shadow .15s ease}
+                .project-gallery img:hover{transform:translateY(-2px);box-shadow:0 5px 12px rgba(32,34,43,0.15)}
+                .project-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+                .project-links .btn{font-size:0.9rem;padding:9px 14px}
+                .field{margin:18px 0}
+                .field > .placeholder{display:block}
+                .field > .placeholder ul{margin:12px 0 16px;padding-left:22px}
+                .field > .placeholder li{margin-bottom:6px}
                 .field .label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--terminal);display:block;margin-bottom:2px}
 
                 .pill-note{display:inline-block;background:var(--terminal-soft);color:var(--terminal);font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:4px 10px;border-radius:999px;margin-bottom:10px}
@@ -209,7 +219,6 @@
                         <div class="muted-block">
                             <div class="eyebrow">ls projects/</div>
                             <strong>Projects</strong>
-                            <span class="pill-note" style="display:block;width:fit-content;margin-top:10px">Minimum 3, each complete with the fields below — a lab report link alone does not qualify</span>
 
                             <div class="project-card">
                                 <h4>Project 1 title</h4>
@@ -228,11 +237,43 @@
                             </div>
 
                             <div class="project-card">
-                                <h4>Project 3 title</h4>
-                                <div class="field"><span class="label">Description</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Your role</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Resources used</span><span class="placeholder">...</span></div>
+                                <h4>CPRE 1860 - Gesture Master</h4>
+                                <div class="project-gallery" aria-label="Gesture Master project photos">
+                                    <a href="images/GestureMasterHardware.png" target="_blank" rel="noopener noreferrer">
+                                        <img src="images/GestureMasterHardware.png" alt="First draft and final soldered Gesture Master hardware">
+                                    </a>
+                                    <a href="images/GestureMasterProjectPath.png" target="_blank" rel="noopener noreferrer">
+                                        <img src="images/GestureMasterProjectPath.png" alt="Gesture Master project path diagram">
+                                    </a>
+                                    <a href="images/GestureMasterUML.png" target="_blank" rel="noopener noreferrer">
+                                        <img src="images/GestureMasterUML.png" alt="Gesture Master software UML diagram">
+                                    </a>
+                                </div>
+                                <div class="project-links">
+                                    <a class="btn" href="pdfs/CPRE-186_Gesture_Master.pdf" target="_blank" rel="noopener noreferrer" download="CPRE-186_Gesture_Master.pdf">Download Project Slideshow (PDF)</a>
+                                </div>
+                                <div class="field"><span class="label">Description</span><span class="content">Gesture master is a wearable, glove-based device that recognizes hand motions 
+                                    and reponds with a short message. Our team of four, designed and built this device to see how hardware and software could work together to solve a real-world problem.
+                                    <br><br>
+                                    We utilized an Adafruit BNO055 gyroscope and accelerometer sensor wired to an Arduino Uno. The sensor reports acceleration, orientation, and temperature data to the 
+                                    Arduino. Our program check the sensor connection in setup, then runs a loop that converts the x, y, and z readings into an orientaton that tracks how long a motion lasts.
+                                    The current POC can identify three gestures: stop, wave, and punch.
+                                    <ul>
+                                        <li>Stop: a raised palm held still, which prints a message and ends the program.</li>
+                                        <li>Wave hello: a left-to-right or right-to-left wave.</li>
+                                        <li>Punch: a strictly forward punch.</li>
+                                    </ul>
+                                    The goal for this project was to support the idea that this approach could be taken beyond the classroom and support gesture control for people wiht disabilities, hands-free
+                                    interaction with digital devices, healthcare technology for people with limited mobility, and interactive learning or entertainment.</span></div>
+                                <div class="field"><span class="label">My role</span><span class="content">I worked mainly on the software. I wrote the first direction methods in the Arduino IDE with a teammate 
+                                    (up, down, left, and right), and we later combined them into a single orientation method. I helped program our first detected gesture, stop, and then worked with a teammate to finalize 
+                                    the stop, wave, and punch gestures. I also designed the software UML diagram, since I had the best grasp of how the code fit together, and helped polish our final presentation.</span></div>
+                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">I learned about sensor hardware and wiring, soldering, reading and interpreting sensor data
+                                    in the Arduino IDE, analyzing vector data for accuracy, designing software with UML diagrams, and collaborating in a team.
+                                </span></div>
+                                <div class="field"><span class="label">Resources used</span><span class="content">Adafruit BNO055 sensor, Arduino Uno, Arduino IDE, and Adafruit's
+                                    documentation for wiring, IDE setup, and the Unified Sensor Driver.
+                                </span></div>
                             </div>
                         </div>
                     </div>
