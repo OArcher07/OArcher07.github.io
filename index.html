@@ -105,8 +105,13 @@
                 .project-gallery a{display:block}
                 .project-gallery img{display:block;width:100%;height:150px;object-fit:cover;border-radius:8px;border:1px solid var(--line);transition:transform .15s ease,box-shadow .15s ease}
                 .project-gallery img:hover{transform:translateY(-2px);box-shadow:0 5px 12px rgba(32,34,43,0.15)}
+                .project-feature-image{display:block;width:100%;max-height:360px;object-fit:contain;margin:16px 0 22px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px}
                 .project-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
                 .project-links .btn{font-size:0.9rem;padding:9px 14px}
+                .project-resource-links a{color:var(--terminal);font-weight:600}
+                .project-resource-links a:hover{color:var(--accent)}
+                .profile-link{color:var(--terminal);font-weight:600}
+                .profile-link:hover{color:var(--accent)}
                 .field{margin:18px 0}
                 .field > .placeholder{display:block}
                 .field > .placeholder ul{margin:12px 0 16px;padding-left:22px}
@@ -158,7 +163,7 @@
                     Nav below covers every required checklist item from the
                     CprE/CybE/EE 4940 portfolio packet:
                     About (front page + name/contact) · Career Objective ·
-                    Senior Design · Projects (3+) · Experience · Resume ·
+                    Projects (including Senior Design) · Experience · Resume ·
                     Reflections (Gen Ed + Cumulative) · Ethics Paper · Contact
                 -->
                 <div class="nav-wrap">
@@ -166,7 +171,6 @@
                     <nav class="tabs" role="tablist" aria-label="Primary">
                         <button class="tab" role="tab" aria-selected="true" data-target="about">about/</button>
                         <button class="tab" role="tab" aria-selected="false" data-target="objective">objective/</button>
-                        <button class="tab" role="tab" aria-selected="false" data-target="senior-design">senior_design/</button>
                         <button class="tab" role="tab" aria-selected="false" data-target="projects">projects/</button>
                         <button class="tab" role="tab" aria-selected="false" data-target="experience">experience/</button>
                         <button class="tab" role="tab" aria-selected="false" data-target="resume">resume/</button>
@@ -197,43 +201,120 @@
                         </div>
                     </div>
 
-                    <!-- SENIOR DESIGN PROJECT -->
-                    <div id="senior-design" class="panel">
-                        <div class="muted-block">
-                            <div class="eyebrow">ls senior_design/</div>
-                            <strong>Senior Design Project</strong>
-                            <span class="pill-note" style="display:block;width:fit-content;margin-top:10px">Required — must include all fields below</span>
-                            <div class="project-card">
-                                <h4>Project title</h4>
-                                <div class="field"><span class="label">Description</span><span class="placeholder">What the project was and what problem it solved.</span></div>
-                                <div class="field"><span class="label">Your role</span><span class="placeholder">What you specifically owned or contributed.</span></div>
-                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="placeholder">Technical and soft skills developed.</span></div>
-                                <div class="field"><span class="label">Supporting documents</span><span class="placeholder">Link a report, poster, repo, or demo — a link to your 4910/4920 report alone does not qualify.</span></div>
-                                <div class="field"><span class="label">Big picture contribution</span><span class="placeholder">Why this project mattered beyond the assignment itself.</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PROJECTS — minimum 3 more, in addition to Senior Design -->
+                    <!-- PROJECTS — including Senior Design -->
                     <div id="projects" class="panel">
                         <div class="muted-block">
                             <div class="eyebrow">ls projects/</div>
                             <strong>Projects</strong>
+                            <span class="pill-note" style="display:block;width:fit-content;margin-top:10px">Senior Design Project</span>
+                            <div class="project-card">
+                                <h4>CPRE 4910/4920 - Senior Design Project - CourseGPT 2.0</h4>
+                                <div class="field"><span class="label">Description</span><span class="content">CourseGPT is a course-specific AI assistant that allows students to ask questions about their course materials 
+                                    and get answers that are grounded in the instructor's provided content instead of general web knowledge. The original system, CourseGPT 1.0, was built with a React frontend, a FastAPI backend,
+                                    PostgreSQL and ChromaDB for storage, and a Llama-based LLM for retrival-augmented generation (RAG). The app integrates with Discord, and Canvas integration is planned. My team inherited this project
+                                    from the prior year's team. Our goal is to audit the existing system, improve its performance and security, and add new features to make it more useful for students and instructors.
+                                </span></div>
+                                <div class="field"><span class="label">Your role</span><span class="content">As the team's Security Lead, I am responsible for identifying and mitigating potential security vulnerabilities in the system. So far, I have
+                                    identified that most instructor and course endpoints have no authentication guards, including unprotected Discord admin routes that would allow anyone to grant themselves admin access. I also flagged an unpatched, pre-authentication
+                                    remote-code-execution CVE in the ChromaDB client configuration, leading to the proposed solution to replace ChromaDB with pgvector, a PostgreSQL extension for vector similarity search, to remove that exposure.
+                                </span></div>
+                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">Security auditing, API authentication/authorization review, vulnerability research, vector database and RAG architecture, reading/evaluating unfamiliar codebases,
+                                    writing formal findings and recommendations.
+                                </span></div>
+                                <div class="field"><span class="label">Supporting documents</span><span class="content">Link a report, poster, repo, or demo — a link to your 4910/4920 report alone does not qualify.</span></div>
+                                <div class="field"><span class="label">Big picture contribution</span><span class="content">Why this project mattered beyond the assignment itself.</span></div>
+                            </div>
+                            <div class="project-card">
+                                <h4>MUSIC 3460 - Log Driven Sonification System</h4>
+                                <div class="project-links">
+                                    <a class="btn" href="pdfs/Final Project Presentation.pdf" target="_blank" rel="noopener noreferrer" download="CPRE-186_Gesture_Master.pdf">Download Project Slideshow (PDF)</a>
+                                </div>
+                                <div class="field"><span class="label">Description</span><span class="content">This project turns system log files into a generative soundscape, where routine system 
+                                    activity produces ambient textures and errors produce audible disruptions. The idea came from combining my cybersecurity 
+                                    background with sound design, with CDC (cyber defense competition) environments as a possible use case: making system activity 
+                                    audible in real time as another layer of monitoring, alongside visual tools.
+                                <br></br>
+                                The patch reads in a .txt or .log file, validates the extension, and steps through it line by line on a user-controlled clock. 
+                                A set of pattern-matching objects scans each line for keywords such as CRON, FAIL, Timed out, Starting/Started, Finished, 
+                                DENIED, root, and refresh, and routes each match to its own subpatch. Each event type gets a distinct sound: CRON events 
+                                become rhythmic kick-and-hi-hat patterns, Start/Timed-out events become shifting wind-like tones, Finished events become a 
+                                short decaying sparkle, DENIED events become a harsh beep that grows louder with repetition, and ongoing background activity 
+                                produces wind-chime and rain-like ambient textures. A simple visual display shows the three most recent log lines as they're read.
+                                <br></br>
+                                The design was shaped by research into data sonification and generative music, particularly Brian Eno's idea of music as a 
+                                living system that evolves from constraints rather than direct composition, and Eric Tamm's writing on Eno's 
+                                use of layered, independent voices. That led me to build each sound as its own self-contained subpatch, so the different 
+                                log events combine into one evolving texture rather than a fixed, pre-written piece.</span></div>
+                                <div class="field"><span class="label">Your role</span><span class="content">This was an individual project. I designed and built the full system alone: the file input 
+                                    and validation, the log-parsing and keyword-matching logic, the line-by-line playback and display, and 
+                                    all seven sound subpatches.</span></div>
+                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">Max/MSP patching, real-time text parsing and pattern matching with regex, synthesis and sound design,
+                                    applying sonification concepts to real datasets, research into generative music theory and its application to interactive systems.
+                                </span></div>
+                                <div class="field"><span class="label">Resources used</span><span class="content">Max/MSP (Max 9), sample and generated system log files, research sources: Brian Eno's writing on generative music, 
+                                    Eric Tamm's book "Brian Eno: His Music and the Vertical Color of Sound", and Miranda and Wanderley's work on data-driven musical controllers.
+                                </span></div>
+                            </div>
+
 
                             <div class="project-card">
-                                <h4>Project 1 title</h4>
-                                <div class="field"><span class="label">Description</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Your role</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Resources used</span><span class="placeholder">Tools, languages, frameworks, hardware, references.</span></div>
+                                <h4>CPRE 3810 - RISC-V Processor Design (Single-Cycle, Pipelined, Hazard-Resolved)</h4>
+                                <a href="images/Pipeline Schematic Hardware.drawio.png" target="_blank" rel="noopener noreferrer">
+                                    <img class="project-feature-image" src="images/Pipeline Schematic Hardware.drawio.png" alt="Final high-level schematic of hardware-scheduled pipelined RISC-V processor.">
+                                </a>
+                                <div class="field"><span class="label">Description</span><span class="content">Over a semester, in a partner based project, we designed and built three working iterations of RISC-V processors
+                                    in structural VHDL:
+                                    <ul>
+                                        <li><strong>Single-Cycle Processor:</strong> A complete datapath and control unit supporting the full RISC-V base instruction set including arithmetic, logical,
+                                            shifts, loads/stores, and all control flow instructions. I designed the ALU with a barrel shifter, the control logic, and the instruction fetch/brach logic. The
+                                            final synthesis of this design showed a maximum frequency of about 22 MHz since it was limited by a long critical path through the load instruction datapath.
+                                        </li>
+                                        <li><strong>Software-scheduled Pipelined Processor:</strong> The same datapath was split into five stages: fetch, decode, execute, memory, and writeback. These stages were connected by pipeline registers
+                                            with no hazard detection. Hazards were avoided by manually inserting NOPs in the assembly code. I designed the hazard-free control logic and the instruction fetch/brach logic. This raised
+                                            the clock frequency to about 60 MHz, but the NOPs made up more than half of the instructions in our larger test programs.
+                                        </li>
+                                        <li><strong>Hardware-Scheduled Pipelined Processor:</strong> We added forwarding, stalling, and flush logic to the Software-scheduled design so that unmodified programs would run correctly without manual NOP instructions.
+                                            I worked out which data and control hazards needed stalls versus forwarding, and implemented the flush logic for branches and jumps.
+                                        </li>
+                                    All of these designs were tested with a synthetic instruction-coverage program, a provided Grendel program benchmark, and a recursive merge sort. They were analyzed for the number of instructions executed,
+                                    clock cycles, CPI, and total execution time. The hardware-scheduled design was the fastest overall, since dynamic hazard handling avoided the instruction-count bloat that the software-scheduled design suffered from.</span>
+                                </span></div>
+                                <div class="field"><span class="label">Your role</span><span class="content">I work as one of two team members on all three parts of this project. I was the primary designer of the ALU (including the barrel shifter), the control unit, and the fetch/branch logic
+                                    in the single-cycle processor. I led the hazard analysis and flush/stall logic for the hardware-scheduled pipeline. I wrote individual testbenches for my modules in QuestaSim before full integration, and contributed to the final performance analysis and report.
+                                </span></div>
+                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">Structural VHDL design, modular hardware design, processor architecture, hardware verification with QuestaSim waveform testing,
+                                    RISC-V assembly, synthesis and performance analysis.
+                                </span></div>
+                                <div class="field"><span class="label">Resources used</span><span class="content">QuestaSim, RISC-V Reference Manual, RARS simulator, course-provided test framework and skeleton code, Intel/Altera synthesis tools.</span></div>
                             </div>
 
                             <div class="project-card">
-                                <h4>Project 2 title</h4>
-                                <div class="field"><span class="label">Description</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Your role</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Resources used</span><span class="placeholder">...</span></div>
+                                <h4>EE 4524 - Microcontroller Projects (ATmega4809)</h4>
+                                <div class="field"><span class="label">Description</span><span class="content">While abroad I took a course that was equivalent to CPRE 2880 and worked on a couple of embedded systems projects built in C on an ATmega4809 microcontroller.
+                                    The first covers timers, the ADC, and interrupts. The second builds on the first project and adds input capture, the event system, and a serial interface.
+                                    <br><br>
+                                    Project 1: Interrupt-Driven LED Display. This program that runs several tasks at once with no delay loops. A timer interrupt sweeps a 
+                                    single LED across a 10-LED array (Cylon eyes), and the ADC reads a potentiometer to set the sweep speed. A push button switches the array 
+                                    to a voltage bar graph. In the Advanced task, the real-time counter alternates every 16 seconds between the normal display and a split display, with the 
+                                    Cylon pattern and the bar graph shown together.
+                                    <br><br>
+                                    Project 2: Multi-Sensor Serial Control System. This program is controlled by single-character commands over a serial terminal. It moves a servo 
+                                    at user-selected speeds, or has it follow a potentiometer. It measures distance with an ultrasonic sensor and reports it in millimetres. It measures 
+                                    the period and pulse widths of a 555 timer signal and detects when that signal stops. It also reports the ADC voltage in millivolts. Hardware timers, the event system, 
+                                    and interrupts handle the measurements, with integer-only arithmetic.</span></div>
+                                <div class="field"><span class="label">My role</span><span class="content">I was the primary developer on both projects, working with a lab partner. I wrote and debugged
+                                     most of each program, including the timer, ADC, and RTC setup for Project 1, and the peripheral setup, interrupt routines, 
+                                     and serial command interface for Project 2. I also completed the Advanced task in Project 1 and the challenge feature in Project 
+                                     2, detecting a stopped 555 timer.</span></div>
+                                <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">Register-level embedded C, hardware timers (PWM, pulse-width and frequency capture), ADC and RTC configuration, 
+                                    event system routing, interrupt-driven design, UART communication, hardware debugging.</span></div>
+                                <div class="field"><span class="label">Resources used</span><span class="content">ATmega4809 datasheet, Arduino Nano Every, lab shield, HC-SR04 ultrasonic sensor, micro servo, 555 timer circuit, serial terminal, 
+                                    Microchip (Atmel) Studio.</span></div>
+                                <div class="project-resource-links">
+                                    <a href="pdfs/ATmega4808-09-DataSheet-DS40002173C.pdf" target="_blank" rel="noopener noreferrer">ATmega4809 datasheet</a> ·
+                                    <a href="https://github.com/OArcher07/Project1_DigSyst">Project 1 code</a> ·
+                                    <a href="https://github.com/OArcher07/Project2_DigSyst">Project 2 code</a>
+                                </div>
                             </div>
 
                             <div class="project-card">
@@ -259,9 +340,9 @@
                                     Arduino. Our program check the sensor connection in setup, then runs a loop that converts the x, y, and z readings into an orientaton that tracks how long a motion lasts.
                                     The current POC can identify three gestures: stop, wave, and punch.
                                     <ul>
-                                        <li>Stop: a raised palm held still, which prints a message and ends the program.</li>
-                                        <li>Wave hello: a left-to-right or right-to-left wave.</li>
-                                        <li>Punch: a strictly forward punch.</li>
+                                        <li>Stop: A raised palm held still, which prints a message and ends the program.</li>
+                                        <li>Wave hello: A left-to-right or right-to-left wave.</li>
+                                        <li>Punch: A strictly forward punch.</li>
                                     </ul>
                                     The goal for this project was to support the idea that this approach could be taken beyond the classroom and support gesture control for people wiht disabilities, hands-free
                                     interaction with digital devices, healthcare technology for people with limited mobility, and interactive learning or entertainment.</span></div>
@@ -283,13 +364,35 @@
                         <div class="muted-block">
                             <div class="eyebrow">cat experience.log</div>
                             <strong>Internship / Co-op / Technical Work Experience</strong>
-                            <span class="pill-note" style="display:block;width:fit-content;margin-top:10px">If applicable</span>
+                            <p style="margin:10px 0 0">Professional profile: <a class="profile-link" href="https://www.linkedin.com/in/oarcher/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
                             <div class="project-card">
-                                <h4>Role, company, dates</h4>
-                                <div class="field"><span class="label">Duties and projects</span><span class="placeholder">...</span></div>
-                                <div class="field"><span class="label">Skills learned</span><span class="placeholder">Technical and soft skills.</span></div>
-                                <div class="field"><span class="label">Evaluations</span><span class="placeholder">Summarize or link performance feedback.</span></div>
-                                <div class="field"><span class="label">Presentations</span><span class="placeholder">Any talks, demos, or write-ups delivered.</span></div>
+                                <h4>Data Security Engineering Intern - Principal Financial | May 2026 - August 2026</h4>
+                                <div class="field"><span class="label">Duties and projects</span><span class="content"><ul>
+                                    <li>Supported cloud security tooling with Zscaler ZIA, Proofpoint, and Splunk for DLP and enterprise access control workflows.</li>
+                                    <li>Developed a Snowflake table unification process using Cortex AI agents to merge security datasets and align schemas.</li>
+                                    <li>Built foundational knowledge of enterprise network infrastructure, segmentation, routing logic, and firewall policy interactions through NSI team shadowing.</li>
+                                </ul></span></div>
+                                <div class="field"><span class="label">Skills learned</span><span class="content">Cloud security tooling, data loss prevention, enterprise access control, Snowflake, Cortex AI agents, network segmentation, routing, and firewall policy analysis.</span></div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4>Undergraduate Research Assistant - ISEAGE | January 2024 - Present</h4>
+                                <div class="field"><span class="label">Duties and projects</span><span class="content"><ul>
+                                    <li>Collaborate with a team to develop and manage five annual Cyber Defense Challenges.</li>
+                                    <li>Design and deploy custom virtual machines hosting web applications, databases, and vulnerable services for realistic cybersecurity scenarios.</li>
+                                    <li>Provide real-time support to competitors during competition days and create post-event reports.</li>
+                                </ul></span></div>
+                                <div class="field"><span class="label">Skills learned</span><span class="content">Virtual machine deployment, web application and database configuration, vulnerability simulation, cybersecurity competition operations, technical support, and reporting.</span></div>
+                            </div>
+
+                            <div class="project-card">
+                                <h4>Seasonal IT Analyst - City of Woodstock | May 2025 - May 2026</h4>
+                                <div class="field"><span class="label">Duties and projects</span><span class="content"><ul>
+                                    <li>Assisted with daily network maintenance, endpoint management, and technical troubleshooting for more than 450 users.</li>
+                                    <li>Analyzed real-time security logs and shadowed incident response processes using SIEM tools.</li>
+                                    <li>Authored internal documentation covering network topology, endpoint deployment, and routine troubleshooting workflows.</li>
+                                </ul></span></div>
+                                <div class="field"><span class="label">Skills learned</span><span class="content">Incident response, SIEM log analysis, endpoint management, network maintenance, technical troubleshooting, and documentation.</span></div>
                             </div>
                         </div>
                     </div>
