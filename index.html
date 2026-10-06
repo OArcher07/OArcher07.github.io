@@ -85,9 +85,9 @@
                 .tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
                 .tag{font-family:'JetBrains Mono',monospace;font-size:0.8rem;background:transparent;border:1px dashed rgba(32,34,43,0.25);padding:6px 12px;border-radius:999px;font-weight:500;color:var(--ink)}
 
-                .actions{margin-top:10px}
+                .actions{margin-top:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
                 .btn{background:var(--accent);color:var(--ink);padding:11px 18px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block;box-shadow:0 4px 10px rgba(238,172,31,0.25)}
-                .btn.secondary{background:transparent;border:1.5px solid var(--ink);box-shadow:none;margin-left:8px}
+                .btn.secondary{background:transparent;border:1.5px solid var(--ink);box-shadow:none}
 
                 .muted-block{background:#fff;border-radius:14px;padding:22px;margin-top:14px;border:1px solid var(--line)}
                 .panels{margin-top:14px}
@@ -98,6 +98,8 @@
                 .content{display:block;line-height:1.65}
                 .req-list{margin:10px 0 0;padding-left:20px;line-height:1.65}
                 .req-list li{margin-bottom:4px}
+                .doc-list{margin:8px 0 0;padding-left:20px;line-height:1.65}
+                .doc-list li{margin-bottom:6px}
 
                 .project-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px;background:var(--cream)}
                 .project-card h4{font-family:'Fraunces',Georgia,serif;font-size:1.08rem;margin:0 0 8px}
@@ -110,6 +112,8 @@
                 .project-links .btn{font-size:0.9rem;padding:9px 14px}
                 .project-resource-links a{color:var(--terminal);font-weight:600}
                 .project-resource-links a:hover{color:var(--accent)}
+                .field a{color:var(--terminal);font-weight:600}
+                .field a:hover{color:var(--accent)}
                 .profile-link{color:var(--terminal);font-weight:600}
                 .profile-link:hover{color:var(--accent)}
                 .field{margin:18px 0}
@@ -144,13 +148,6 @@
                         <h1>Olivia Archer</h1>
                         <p class="sub">Iowa State senior — Cyber Security Engineering</p>
                         <p class="lead">I’m passionate about understanding how large‑scale systems operate, how they fail, and how to secure them against evolving threats. Through my roles as a TA and research assistant at ISEAGE, along with industry experience as a Data Security Intern, I’ve gained practical insight into securing networks, analyzing traffic, and designing systems that prioritize reliability and resilience. I’m committed to creating secure architectures that support both users and critical operations.</p>
-
-                        <div class="tags">
-                            <span class="tag">Network Infrastructure</span>
-                            <span class="tag">Security Architecture</span>
-                            <span class="tag">Penetration Testing</span>
-                            <span class="tag">Automation</span>
-                        </div>
 
                         <div class="actions">
                             <a class="btn" href="mailto:olivia-archer@accinternational.com">Contact Olivia</a>
@@ -187,8 +184,13 @@
                         <div class="muted-block">
                             <div class="eyebrow">cat about.md</div>
                             <strong>About</strong>
-                            <p style="margin:10px 0 0">I'm finishing my degree at Iowa State with a focus on designing and defending resilient networks. My goals include advancing secure infrastructure design, improving incident response automation, and making security accessible across teams.</p>
-                            <p class="placeholder" style="margin-top:10px">Replace this with a short, welcoming introduction — who you are, what draws you to security engineering, and what a visitor should expect to find here.</p>
+                            <p style="margin:10px 0 0">Hello! My name is Olivia Archer, and I am a senior at Iowa State University, studying Cyber Security Engineering.
+                                <br></br>
+                                I’m passionate about understanding how large‑scale systems operate, how they fail, and how to secure them against evolving threats. Through my roles as a TA and research assistant at ISEAGE, along with industry experience as a Data Security Intern, 
+                                I’ve gained practical insight into securing networks, analyzing traffic, and designing systems that prioritize reliability and resilience. I’m committed to creating secure architectures that support both users and critical operations.
+                                I'm working toward a career in network security post-graduation!
+                                <br></br>
+                                Outside of school and work, you'll usually find me knitting, reading, journaling, or under a tree soaking up the sun.</p>
                         </div>
                     </div>
 
@@ -197,7 +199,9 @@
                         <div class="muted-block">
                             <div class="eyebrow">cat objective.txt</div>
                             <strong>Career Objective</strong>
-                            <p class="placeholder" style="margin-top:10px">Not a resume summary — this is about where you're headed. In a few sentences, describe the kind of engineering work you want to do, the problems you want to work on, and the impact you hope to have. What kind of role, team, or mission are you looking for next?</p>
+                            <p class="content" style="margin-top:10px">My goal is to build a career in network security, where I can help teams think about security from the start of the design process. I want to be the kind of engineer who asks the hard security questions early 
+                                and who helps make a security-first mindset normal on every team I'm part of. I also want to be part of changing who gets to 
+                                do that work by creating a visible, active role in encouraging more women into tech and security opportunities along the way.</p>
                         </div>
                     </div>
 
@@ -209,6 +213,7 @@
                             <span class="pill-note" style="display:block;width:fit-content;margin-top:10px">Senior Design Project</span>
                             <div class="project-card">
                                 <h4>CPRE 4910/4920 - Senior Design Project - CourseGPT 2.0</h4>
+                                <img class="project-feature-image" src="images/CourseGPTWelcome.png" alt="CourseGPT welcome screen" />
                                 <div class="field"><span class="label">Description</span><span class="content">CourseGPT is a course-specific AI assistant that allows students to ask questions about their course materials 
                                     and get answers that are grounded in the instructor's provided content instead of general web knowledge. The original system, CourseGPT 1.0, was built with a React frontend, a FastAPI backend,
                                     PostgreSQL and ChromaDB for storage, and a Llama-based LLM for retrival-augmented generation (RAG). The app integrates with Discord, and Canvas integration is planned. My team inherited this project
@@ -221,8 +226,19 @@
                                 <div class="field"><span class="label">Skills or knowledge gained</span><span class="content">Security auditing, API authentication/authorization review, vulnerability research, vector database and RAG architecture, reading/evaluating unfamiliar codebases,
                                     writing formal findings and recommendations.
                                 </span></div>
-                                <div class="field"><span class="label">Supporting documents</span><span class="content">Link a report, poster, repo, or demo — a link to your 4910/4920 report alone does not qualify.</span></div>
-                                <div class="field"><span class="label">Big picture contribution</span><span class="content">Why this project mattered beyond the assignment itself.</span></div>
+                                <div class="field">
+                                    <span class="label">Supporting documents</span>
+                                    <div class="content">
+                                        <ul class="doc-list">
+                                            <li><a href="https://sdmay27-10.sd.ece.iastate.edu/#" target="_blank" rel="noopener noreferrer">CourseGPT 2.0 project website</a></li>
+                                            <li><a href="https://sdmay26-37.sd.ece.iastate.edu/" target="_blank" rel="noopener noreferrer">CourseGPT 1.0 project website</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="field"><span class="label">Big picture contribution</span><span class="content">This project has the potential to grow and impact the way students interact with course materials, highlighting the integration of AI and education.
+                                    AI chatbots toward an assistant that actually knows a course's content can reshape how students study, how quickly they can get help, and how much instructors can support them. CourseGPT isn't just an ISU thing, it can be a project that spans
+                                    multiple universities and disciplines.
+                                </span></div>
                             </div>
                             <div class="project-card">
                                 <h4>MUSIC 3460 - Log Driven Sonification System</h4>
@@ -363,7 +379,7 @@
                     <div id="experience" class="panel">
                         <div class="muted-block">
                             <div class="eyebrow">cat experience.log</div>
-                            <strong>Internship / Co-op / Technical Work Experience</strong>
+                            <strong>Internship & Technical Work Experience</strong>
                             <p style="margin:10px 0 0">Professional profile: <a class="profile-link" href="https://www.linkedin.com/in/oarcher/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
                             <div class="project-card">
                                 <h4>Data Security Engineering Intern - Principal Financial | May 2026 - August 2026</h4>
